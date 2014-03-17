@@ -6,13 +6,28 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
 
   def create
 
-    @user = User.create(resource)
-    if @user.save
-      render :json => {:state => {:code => 0}, :data => @user }
+    build_resource(sign_up_params)
+    if resource.save
+      sign_in(resource, :store => false)
+      render :status => 200,
+           :json => { :success => true,
+                      :info => t("devise.registrations.signed_up"),
+                      :data => { :user => resource,
+                                 :auth_token => current_user.email } }
     else
-      render :json => {:state => {:code => 1, :messages => @user.errors.full_messages} }
+      render :status => :unprocessable_entity,
+             :json => { :success => false,
+                        :info => resource.errors.full_messages,
+                        :data => {} }
     end
 
+  end
+  
+  
+  
+  private 
+  def sign_up_params
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
   
 end
