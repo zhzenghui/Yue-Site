@@ -9,6 +9,7 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
     if resource.save
       sign_in(resource, :store => false)
+
       render :status => 200,
            :json => { :success => true,
                       :info => t("devise.registrations.signed_up"),
@@ -24,8 +25,8 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
   end
   
   
-  
   private 
+
   def sign_up_params
     params.require(:user).permit(:email, :password, :password_confirmation)
   end

@@ -16,7 +16,10 @@ Yue::Application.routes.draw do
         post 'registrations' => 'registrations#create', :as => 'register'
         post 'sessions' => 'sessions#create', :as => 'login'
         delete 'sessions' => 'sessions#destroy', :as => 'logout'
+        get 'post' => 'post#index', :as => 'post'
+
       end
+
       get 'tasks' => 'tasks#index', :as => 'tasks'
       post 'tasks' => 'tasks#create'
       put 'tasks/:id/open' => 'tasks#open', :as => 'open_task'
