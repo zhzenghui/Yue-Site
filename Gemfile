@@ -20,8 +20,9 @@ gem 'coffee-rails', '~> 4.0.0'
 
 
 # File upload
-gem "paperclip", "~> 4.1"
+gem "carrierwave"
 gem 'mini_magick', '~> 3.7.0'
+gem 'mime-types'
 
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -52,3 +53,4 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem 'logger'

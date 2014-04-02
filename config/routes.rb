@@ -4,6 +4,11 @@ Yue::Application.routes.draw do
   root :to => "home#index"
   
 
+  match '/avatar', to: 'home#avatar', via: 'get'
+  match '/avatar', to: 'home#create', via: 'post'
+
+
+
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
@@ -17,6 +22,9 @@ Yue::Application.routes.draw do
         post 'sessions' => 'sessions#create', :as => 'login'
         delete 'sessions' => 'sessions#destroy', :as => 'logout'
         get 'post' => 'post#index', :as => 'post'
+        get "info" => 'post#info', :as=> 'info'
+        post "upload" => 'post#upload', :as => 'upload'
+
 
       end
 

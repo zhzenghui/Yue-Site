@@ -13,4 +13,27 @@ class Api::V1::PostController < ApplicationController
                      :info =>" @task.errors.full_messages",
                      :data => {} }
   end
+
+
+  def info
+   render :status => :unprocessable_entity,
+          :json => { :success => false,
+                     :info =>"上传要求：jpg ",
+                     :data => {} }
+  end
+
+  def upload
+    @image = params[:image]
+
+
+   render :status => :unprocessable_entity,
+          :json => { :success => false,
+                     :info =>" @task.errors.full_messages",
+                     :data => {} }
+  end 
+
+
+
+
+
 end

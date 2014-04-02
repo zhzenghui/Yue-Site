@@ -4,4 +4,13 @@ class HomeController < ApplicationController
     
      
   end
+
+  def create 
+
+  end
+
+
+  def avatar
+  	@user = current_user
+  end
 end
